@@ -59,7 +59,7 @@
                   <tr>
                       <td>{{$count++}}</td>
                       <td>{{$order::find($order->id)->user->name}}</td>
-                      <td>{{$order->created_at->diffForHumans()}}</td>
+                      <td>{{$order->created_at}}</td>
                       <td>{{ Carbon\Carbon::parse($order->pick_up_date)->format('Y-m-d') }}, <br> {{$order->pick_up_address}}</td>
                       <td>{{$order->product_des}}, <br> Quantity: {{$order->quantity}}</td>
                       <td>{{$order->customer_name}}, <br>{{$order->customer_address}}, <br> {{$order->customer_mobile}} </td>
@@ -83,7 +83,9 @@
                           <select name="agent_id" id="" style="margin-bottom: 20px;" required>
                             <option value="">Select Delivery Man</option>
                             @foreach($agents as $agent)
+                              @if($agent->status == 'active')
                               <option value="{{$agent->id}}">{{$agent->name}}</option>
+                              @endif
                             @endforeach
                           </select>
                           <div>

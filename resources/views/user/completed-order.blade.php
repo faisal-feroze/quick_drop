@@ -48,7 +48,7 @@
                 @endphp
                 <tr>
                     <td>{{$count++}}</td>
-                    <td>{{$order->created_at->diffForHumans()}}</td>
+                    <td>{{$order->created_at}}</td>
                     <td>{{$order->customer_name}}, <br> {{$order->customer_address}}</td>
                     <td>{{$order->product_des}}, <br> Quantity: {{$order->quantity}}</td>
                     <td>{{$order->customer_note}}</td>

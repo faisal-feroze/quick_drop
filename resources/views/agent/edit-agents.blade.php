@@ -25,6 +25,13 @@
             </div>
 
             <div class="form-group row">
+                <label for="text" class="col-sm-2 col-form-label">Secondary Mobile</label>
+                <div class="col-sm-10">
+                  <input type="text" name="secondary_phone" class="form-control" id="" value="{{$agent->secondary_phone}}">
+                </div>
+            </div>
+
+            <div class="form-group row">
                 <label for="text" class="col-sm-2 col-form-label">E-mail</label>
                 <div class="col-sm-10">
                   <input type="email" name="email" class="form-control" id="" value="{{$agent->email}}">
@@ -35,6 +42,13 @@
                 <label for="text" class="col-sm-2 col-form-label">Addess</label>
                 <div class="col-sm-10">
                     <textarea name="address" class="form-control" id="" cols="12" rows="5">{{$agent->address}}</textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="text" class="col-sm-2 col-form-label">Reference</label>
+                <div class="col-sm-10">
+                  <input type="text" name="reference" class="form-control" id="" value="{{$agent->reference}}">
                 </div>
             </div>
 

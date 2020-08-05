@@ -71,7 +71,7 @@ class AdminController extends Controller
         $order->status = 'picked';
         $order->pickup_agent_id = $agent;
         $order->save();
-        return redirect()->route('picked')->with('message',$order->order_code.' has been successfully picked');
+        return redirect()->route('accepted')->with('message',$order->order_code.' has been successfully picked');
     } 
 
     public function order_accepted($id){
@@ -98,10 +98,10 @@ class AdminController extends Controller
         $order->delivery_agent_id = $agent;
         $order->save();
         if($after_picked=='delivered'){
-            return redirect()->route('delivered')->with('message',$order->order_code.' has been successfully delivered');
+            return redirect()->route('picked')->with('message',$order->order_code.' has been successfully delivered');
         }
         else{
-            return redirect()->route('order_returned_admin')->with('message',$order->order_code.' has been returned');
+            return redirect()->route('picked')->with('message',$order->order_code.' has been returned');
         }
         
     }   

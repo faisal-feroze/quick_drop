@@ -47,7 +47,7 @@
             
                 <tr>
                     <td>{{$count++}}</td>
-                    <td>{{$order->created_at->diffForHumans()}}</td>
+                    <td>{{$order->created_at}}</td>
                     <td>{{ Carbon\Carbon::parse($order->pick_up_date)->format('Y-m-d') }}</td>
                     <td>{{$order->delivery_date}}</td>
                     <td>{{$order->customer_name}}, <br> {{$order->customer_address}}</td>

@@ -23,6 +23,7 @@
                 <th>Phone</th>
                 <th>E-mail</th>
                 <th>Address</th>
+                <th>Reference</th>
                 <th>NID</th>
                 <th>Status</th>
                 <th>Created At</th>
@@ -37,6 +38,7 @@
                 <th>Phone</th>
                 <th>E-mail</th>
                 <th>Address</th>
+                <th>Reference</th>
                 <th>NID</th>
                 <th>Status</th>
                 <th>Created At</th>
@@ -51,9 +53,10 @@
                   <tr>
                       <td>{{$count++}}</td>
                       <td>{{$agent->name}}</td>  
-                      <td>{{$agent->phone}}</td>
+                      <td>{{$agent->phone}} <br> {{$agent->secondary_phone}} </td>
                       <td>{{$agent->email}}</td>
                       <td>{{$agent->address}}</td>
+                      <td>{{$agent->reference}}</td>
                       <td>{{$agent->NID}}</td>
                       <td>{{$agent->status}}</td>
                       <td>{{$agent->created_at->diffForHumans()}}</td>    

@@ -55,7 +55,7 @@
                   <tr>
                       <td>{{$count++}}</td>
                       <td>{{$order::find($order->id)->user->name}}</td>
-                      <td>{{$order->created_at->diffForHumans()}}</td>
+                      <td>{{$order->created_at}}</td>
                       <td>{{ Carbon\Carbon::parse($order->pick_up_date)->format('Y-m-d') }}, <br> {{$order->pick_up_address}}</td>
                       <td>{{$order->product_des}}, <br> Quantity: {{$order->quantity}}</td>
                       <td>Name: {{$order->customer_name}} <br> Address: {{$order->customer_address}}</td>

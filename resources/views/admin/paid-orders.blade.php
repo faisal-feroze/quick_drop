@@ -58,7 +58,7 @@
                   <tr>
                       <td>{{$count++}}</td>
                       <td>{{$order::find($order->id)->user->name}}</td>
-                      <td>{{$order->created_at->diffForHumans()}}</td>
+                      <td>{{$order->created_at}}</td>
                       <td></td>
                       <td>Name: {{$order->customer_name}} <br> Adress: {{$order->customer_address}}</td>
                       <td>{{ App\Agent::find($order->delivery_agent_id)->name }}</td>                
