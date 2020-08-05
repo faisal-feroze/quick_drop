@@ -43,10 +43,33 @@
             </div>
 
             <div class="form-group row">
-                <label for="text" class="col-sm-2 col-form-label">Addess</label>
+                <label for="text" class="col-sm-2 col-form-label">Pickup Addess</label>
                 <div class="col-sm-10">
                     <textarea name="address" class="form-control" id="" cols="5" rows="2">{{auth()->user()->address}}</textarea>
                 </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="text" class="col-sm-2 col-form-label">Street Addess</label>
+                <div class="col-sm-10">
+                    <textarea name="street_address" class="form-control" id="" cols="5" rows="2">{{auth()->user()->street_address}}</textarea>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="text" class="col-sm-2 col-form-label">City</label>
+                <div class="col-sm-10">
+                    <select class="form-control" name="city">
+                        <option selected>{{auth()->user()->city}}</option>
+                        <option value="Dhaka">Dhaka</option>
+                        <option value="Barisal">Barisal</option>
+                        <option value="Chittagong">Chittagong</option>
+                        <option value="Khulna">Khulna</option>
+                        <option value="Rajshahi">Rajshahi</option>
+                        <option value="Sylhet">Sylhet</option>
+                    </select>
+                </div> 
             </div>
 
 

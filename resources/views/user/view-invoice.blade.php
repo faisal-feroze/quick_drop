@@ -94,7 +94,7 @@
                     </tr>
                 </table>
 
-                <button type="" class="btn btn-success">Print Bills</button>
+                {{--  <button type="" class="btn btn-success">Print Bills</button>  --}}
                 
             </div>
         </div>

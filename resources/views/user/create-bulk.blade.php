@@ -28,7 +28,7 @@
               <div class="form-group row">
                   <label for="text" class="col-sm-2 col-form-label">Pickup Address</label>
                   <div class="col-sm-10">
-                    <textarea name="pick_up_address" class="form-control" id="" cols="15" rows="5"></textarea>
+                    <textarea name="pick_up_address" class="form-control" id="" cols="15" rows="5">{{auth()->user()->address}}</textarea>
                   </div>
               </div>
 

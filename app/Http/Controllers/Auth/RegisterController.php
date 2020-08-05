@@ -77,6 +77,8 @@ class RegisterController extends Controller
             'address' => $data['address'], 
             'payment_method' => $data['payment_method'],
             'payment_details' => $data['payment_details'],
+            'street_address' => $data['street_address'],
+            'city' => $data['city'],
         ]);
         $user->attachRole('user');
         return $user;
