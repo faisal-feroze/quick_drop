@@ -131,6 +131,7 @@ class UserController extends Controller
 
         $pickup_date = request('pick_up_date');
         $pickup_address = request('pick_up_address');
+        $secondary_phone = request('secondary_phone');
         $data = request('all_info');
         $delivery_date = request('delivery_date'); 
         $delivery_time = request('preferred_delivery_time'); 
@@ -149,6 +150,7 @@ class UserController extends Controller
                 'user_id'=> Auth::user()->id,
                 'pick_up_date' => $pickup_date,
                 'pick_up_address' => $pickup_address,
+                'secondary_phone' => $secondary_phone,
                 'customer_name' => $values[0],
                 'customer_mobile' => $values[1],
                 'customer_address' => $values[2],

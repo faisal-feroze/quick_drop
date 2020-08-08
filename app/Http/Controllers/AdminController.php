@@ -34,13 +34,14 @@ class AdminController extends Controller
     } 
 
     public function picked(){
-        $orders = Order::all()->where('status','picked');
+        //$orders = Order::all()->where('status','picked');
+        $orders = Order::where('status','picked')->orderBy('delivery_date','ASC')->get();
         $agents = Agent::all();
         return view('admin.picked-orders',['orders'=>$orders,'agents'=>$agents,'count'=>1]);
     } 
 
     public function accepted(){
-        $orders = Order::all()->where('status','accepted');
+        $orders = Order::where('status','accepted')->orderBy('pick_up_date','ASC')->get();
         $agents = Agent::all();
         return view('admin.accepted-orders',['orders'=>$orders,'agents'=>$agents,'count'=>1]);
     } 

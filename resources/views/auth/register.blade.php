@@ -88,7 +88,7 @@
                                     <option value="Rajshahi">Rajshahi</option>
                                     <option value="Sylhet">Sylhet</option>
                                 </select>
-                              
+
                             </div>
                         </div>
 
@@ -102,7 +102,7 @@
                                     <option value="Rocket">Rocket</option>
                                     <option value="Bank Transfer">Bank Transfer</option>
                                 </select>
-                              
+
                             </div>
                         </div>
 
@@ -196,28 +196,28 @@
 
 
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" name="company_name"  placeholder="Company Name">
+                    <input type="text" class="form-control form-control-user" name="company_name"  placeholder="Company Name" required>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" name="name"  placeholder="Username">
+                    <input type="text" class="form-control form-control-user" name="name"  placeholder="Name" required>
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" name="phone"  placeholder="Mobile">
+                    <input type="text" class="form-control form-control-user" name="phone"  placeholder="Mobile" required>
                   </div>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" name="address"  placeholder="Pickup Address">
+                    <input type="text" class="form-control form-control-user" name="address"  placeholder="Pickup Street Address" required>
                 </div>
 
                 <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
+                    <!-- <div class="col-sm-6 mb-3 mb-sm-0">
                         <input type="text" class="form-control form-control-user" name="street_address"  placeholder="Street Address">
-                    </div>
+                    </div> -->
                     <div class="col-sm-6">
-                        <select class="form-control" name="city">
+                        <select class="form-control" name="city" required>
                             <option selected>Select a City</option>
                             <option value="Dhaka">Dhaka</option>
                             <option value="Barisal">Barisal</option>
@@ -229,18 +229,20 @@
                     </div>
                 </div>
 
-                <div class="form-group row"> 
+                <div class="form-group row">
                     <div class="col-sm-6">
-                        <select class="form-control" name="payment_method">
+                        <select class="form-control" name="payment_method" required>
                             <option selected>Select a Payment Method</option>
                             <option value="Bkash">Bkash</option>
                             <option value="Rocket">Rocket</option>
                             <option value="Bank Transfer">Bank Transfer</option>
+                            <option value="Hand Cash (From Office)">Hand Cash (From Office)</option>
+                            <option value="Hand Cash (Home)">Hand Cash (Home)</option>
                         </select>
                     </div>
 
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="text" class="form-control form-control-user" name="payment_details" placeholder="Payment Details">
+                        <input type="text" class="form-control form-control-user" name="payment_details" placeholder="Payment Details" required>
                     </div>
                 </div>
 
@@ -273,7 +275,7 @@
                   </div>
                   <div class="col-sm-6">
                     {{--  <input type="password" class="form-control form-control-user"  placeholder="Repeat Password">  --}}
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Repeat Password">
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
                   </div>
                 </div>
                 <button type="submit" class="btn btn-primary btn-user btn-block">

@@ -23,6 +23,7 @@
                 <th>Total Price</th>
                 <th>Parcel Status</th>
                 <th>Code</th>
+                <th>Action</th>
                 <th>Updated At</th>
               </tr>
             </thead>
@@ -38,6 +39,7 @@
                 <th>Total Price</th>
                 <th>Parcel Status</th>
                 <th>Code</th>
+                <th>Action</th>
                 <th>Updated At</th>
               </tr>
             </tfoot>
@@ -56,6 +58,11 @@
                     <td>{{$order->amount}}</td>
                     <td>{{$order->status}}</td>
                     <td>{{$order->order_code}}</td>
+                    @if($order->status=='accepted')
+                      <td><a href="{{ route('order.edit',['id'=> $order->id]) }}" class="btn btn-primary">Edit</a></td>
+                      @else
+                      <td></td>
+                    @endif
                     <td>{{$order->updated_at->diffForHumans()}}</td>
 
                 </tr>

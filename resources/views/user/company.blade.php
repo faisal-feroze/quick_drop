@@ -81,6 +81,8 @@
                         <option value="Bkash">Bkash</option>
                         <option value="Rocket">Rocket</option>
                         <option value="Bank Account">Bank Account</option>
+                        <option value="Hand Cash (From Office)">Hand Cash (From Office)</option>
+                        <option value="Hand Cash (Home)">Hand Cash (Home)</option>
                     </select>
                 </div> 
             </div>

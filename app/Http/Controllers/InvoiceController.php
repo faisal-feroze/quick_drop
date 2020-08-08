@@ -35,7 +35,8 @@ class InvoiceController extends Controller
         $net_amount = $inputs['net_amount'];
         $cod = $inputs['cod'];  
         $total_to_pay = $inputs['total_to_pay'];
-        $remarks = $inputs['remarks'];
+        $remarks = $inputs['remarks']; 
+        $home_cash_charge = $inputs['home_cash_charge'];
 
 
         
@@ -64,6 +65,7 @@ class InvoiceController extends Controller
                         'cod' => $cod[$i],
                         'total_to_pay' => $total_to_pay,
                         'remarks' => $remarks,
+                        'home_cash_charge' => $home_cash_charge,
                     ); 
 
             \DB::table('orders')->where('id', $order_id[$i])->update(['bill_received'=>'YES','bill_status'=>'paid']);

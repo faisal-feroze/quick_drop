@@ -54,10 +54,44 @@
                         <td>{{$order->order_code}}</td>
                         <td>
                           @if($order->status == 'returned') 
-                            <input class="inp_{{$count}}" type="number" min="0" name="" value="0" disabled>
+                            {{--  <input class="inp_{{$count}}" type="number" min="0" name="" value="0" disabled>  --}}
+                            <select class="inp_{{$count}} form-control" id="" disabled>
+                              <option selected value="0">0</option>
+                              <option value="35">35</option>
+                              <option value="40">40</option>
+                              <option value="45">45</option>
+                              <option value="50">50</option>
+                              <option value="55">55</option>
+                              <option value="60">60</option>
+                              <option value="65">65</option>
+                              <option value="70">70</option>
+                              <option value="75">75</option>
+                              <option value="80">80</option>
+                              <option value="85">85</option>
+                              <option value="90">90</option>
+                              <option value="95">95</option>
+                              <option value="100">100</option>
+                            </select>
                             
                           @else 
-                            <input class="inp_{{$count}}" type="number" min="0" name="" disabled>
+                            {{--  <input class="inp_{{$count}}" type="number" min="0" name="" disabled>  --}}
+                            <select class="inp_{{$count}} form-control" id="" disabled>
+                              <option value="0">0</option>
+                              <option selected value="35">35</option>
+                              <option value="40">40</option>
+                              <option value="45">45</option>
+                              <option value="50">50</option>
+                              <option value="55">55</option>
+                              <option value="60">60</option>
+                              <option value="65">65</option>
+                              <option value="70">70</option>
+                              <option value="75">75</option>
+                              <option value="80">80</option>
+                              <option value="85">85</option>
+                              <option value="90">90</option>
+                              <option value="95">95</option>
+                              <option value="100">100</option>
+                            </select>
                           @endif
                         
                         </td>

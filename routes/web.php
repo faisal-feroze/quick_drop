@@ -17,9 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-    echo 'test';
-    //return view('test');
+Route::get('/run', function () {
+    //echo 'test';
+    $exitCode = Artisan::call('migrate');
+    
 });
 
 Auth::routes();

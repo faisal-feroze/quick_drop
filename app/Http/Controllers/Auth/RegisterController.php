@@ -74,10 +74,10 @@ class RegisterController extends Controller
             'status' => false,
             'company_name' => $data['company_name'],
             'phone' => $data['phone'],
-            'address' => $data['address'], 
+            'address' => $data['address'],
             'payment_method' => $data['payment_method'],
             'payment_details' => $data['payment_details'],
-            'street_address' => $data['street_address'],
+            // 'street_address' => $data['street_address'],
             'city' => $data['city'],
         ]);
         $user->attachRole('user');
@@ -92,7 +92,7 @@ class RegisterController extends Controller
 
         event(new Registered($user = $this->create($request->all())));
 
-        return redirect($this->redirectPath())->with('message','Please Login');
+        return redirect($this->redirectPath())->with('message','You have successfully Registered. Admin will approve you soon.');
 
     }
 

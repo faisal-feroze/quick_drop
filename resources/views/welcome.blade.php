@@ -61,6 +61,14 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .alert.alert-success.cus_alert {
+                font-size: 24px;
+                background-color: deepskyblue;
+                color: black;
+                padding-left: 50px;
+                padding-right: 50px;
+            }
         </style>
     </head>
     <body>
@@ -68,7 +76,12 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                    @if(auth()->user()->hasRole('user'))
+                        <a href="{{ url('/user') }}">Dashboard</a>
+                    @else
+                        <a href="{{ url('/admin') }}">Dashboard</a>
+                    @endif
+
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -80,6 +93,10 @@
             @endif
 
             <div class="content">
+
+                @if(session('message'))
+                    <div class="alert alert-success cus_alert">{{session('message')}}</div>
+                @endif
                 <div class="title m-b-md">
                     Quick Drop
                 </div>

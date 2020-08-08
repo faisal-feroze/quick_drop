@@ -67,8 +67,8 @@
                             <tr>
                                 <td colspan="3">Order Group for this Service Charge:{{App\Order::where('id',$invoice->order_id)->pluck('order_code')->first()}}</td>
                                 <td>Cash Handling Charge (1% applicable)</td>
-                                <td>-{{$invoice->cod}}</td>
                                 <td></td>
+                                <td>-{{$invoice->cod}}</td>
                             </tr>
 
                             @php
@@ -76,10 +76,21 @@
                                 $user_id = App\Order::where('id',$invoice->order_id)->pluck('user_id')->first();
                                 $total_to_pay = $invoice->total_to_pay;
                                 $remarks = $invoice->remarks;
+                                $home_cash_charge = $invoice->home_cash_charge;
                             @endphp
 
                         @endforeach
+                    
+                        @if(App\User::where('id',$user_id)->pluck('payment_method')->first()=='Hand Cash (Home)')
 
+                            <tr>
+                                <td colspan="3"></td>
+                                <td>Hand Cash (Home) Charge 1% of total amount {{$total_to_pay + $home_cash_charge}}</td>
+                                <td></td>
+                                <td>- {{$home_cash_charge}}</td>
+                            </tr>
+
+                        @endif
 
 
                     <tr>

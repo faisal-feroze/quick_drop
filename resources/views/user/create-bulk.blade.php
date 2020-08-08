@@ -32,6 +32,13 @@
                   </div>
               </div>
 
+              <div class="form-group row">
+                <label for="text" class="col-sm-2 col-form-label">Default Mobile</label>
+                <div class="col-sm-10">
+                  <input type="text" name="secondary_phone" class="form-control" id="" value="{{auth()->user()->phone}}" required>
+                </div>
+              </div>
+
               <p class="border-bottom-primary">Parcel Information</p>
 
               <div class="order_inouts">

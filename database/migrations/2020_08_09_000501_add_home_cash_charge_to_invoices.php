@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddThreeNewColToInvoice extends Migration
+class AddHomeCashChargeToInvoices extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,7 @@ class AddThreeNewColToInvoice extends Migration
     public function up()
     {
         Schema::table('invoices', function (Blueprint $table) {
-            $table->float('cod')->nullable();
-            $table->integer('total_to_pay')->nullable();;	
-            $table->string('remarks')->nullable();
+            $table->float('home_cash_charge')->nullable();
         });
     }
 

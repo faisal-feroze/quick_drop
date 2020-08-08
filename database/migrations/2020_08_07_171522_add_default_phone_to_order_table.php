@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddThreeNewColToInvoice extends Migration
+class AddDefaultPhoneToOrderTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class AddThreeNewColToInvoice extends Migration
      */
     public function up()
     {
-        Schema::table('invoices', function (Blueprint $table) {
-            $table->float('cod')->nullable();
-            $table->integer('total_to_pay')->nullable();;	
-            $table->string('remarks')->nullable();
+        Schema::table('orders', function (Blueprint $table) {
+            $table->string('secondary_phone')->nullable();
         });
     }
 
@@ -27,7 +25,7 @@ class AddThreeNewColToInvoice extends Migration
      */
     public function down()
     {
-        Schema::table('invoices', function (Blueprint $table) {
+        Schema::table('orders', function (Blueprint $table) {
             //
         });
     }
