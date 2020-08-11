@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Agent;
+use App\User;
+use App\Role;
+use Illuminate\Support\Facades\Hash;
 
 class DeliveryController extends Controller
 {
@@ -20,7 +23,8 @@ class DeliveryController extends Controller
      */
     public function index()
     {
-        $agents = Agent::all();
+        $agents = User::whereHas('roles', function($q){$q->whereIn('display_name', ['agent']);})->get();
+
         return view('agent.all-agents',['agents'=>$agents,'count'=>1]);
     }
 
@@ -43,10 +47,26 @@ class DeliveryController extends Controller
     public function store(Request $request)
     {
         $inputs = $request->all();
-        Agent::create($inputs);
-        session()->flash('post-created-message','New Post is Created');
+        // Agent::create($inputs);
+        // session()->flash('post-created-message','New Post is Created');
+        // return redirect()->route('all_agents');
+
+        $validatedData = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
+        ]);
+
+        $user = User::create([
+            'name' => $inputs['name'],
+            'email' => $inputs['email'],
+            'password' => Hash::make($inputs['password']),
+            'status' => $inputs['status'],
+            'phone' => $inputs['phone'],
+            'address' => $inputs['address'],
+        ]);
+        $user->attachRole('agent');
         return redirect()->route('all_agents');
-        
     }
 
     /**
@@ -69,7 +89,7 @@ class DeliveryController extends Controller
      */
     public function edit($id)
     {
-        $agent = Agent::find($id);
+        $agent = User::find($id);
         return view('agent.edit-agents',['agent'=>$agent]);
     }
 
@@ -83,9 +103,9 @@ class DeliveryController extends Controller
     public function update(Request $request, $id)
     {
         $inputs = $request->all();
-        $agent = Agent::find($id);
+        $agent = User::find($id);
         $agent->update($inputs);
-        session()->flash('message','Post is Updated');
+        session()->flash('message','Agent Profile is Updated');
         return redirect()->route('all_agents');
     }
 

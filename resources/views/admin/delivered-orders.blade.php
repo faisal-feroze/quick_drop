@@ -63,7 +63,7 @@
                       <td>{{$order->status}}</td>
                       <td>{{$order->delivery_date}}, <br> {{$order->preferred_delivery_time}}</td>
                       <td>{{$order->order_code}}</td>
-                      <td>{{ App\Agent::find($order->delivery_agent_id)->name }}</td>
+                      <td>{{ App\User::find($order->delivery_agent_id)->pluck('name')->first() }}</td>
                       <td>{{$order->updated_at->diffForHumans()}}</td>
   
                   </tr>

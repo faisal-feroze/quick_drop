@@ -39,6 +39,10 @@ class LoginController extends Controller
         if($user->hasRole('user')){
             return redirect('/user');
         }
+
+        if($user->hasRole('agent')){
+            return redirect('/agent');
+        }
     }
 
     /**

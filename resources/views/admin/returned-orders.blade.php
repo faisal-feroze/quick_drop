@@ -64,7 +64,7 @@
                       <td>{{$order->order_code}}</td>
                       <td>
                         @if($order->delivery_agent_id)
-                          {{ App\Agent::find($order->delivery_agent_id)->name }}
+                          {{ App\User::find($order->delivery_agent_id)->name }}
                         @endif
                       </td>
                       <td></td>

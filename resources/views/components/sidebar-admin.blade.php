@@ -36,13 +36,25 @@
     <li class="nav-item">
       <a class="nav-link" href="{{ route('accepted') }}">
         <i class="fas fa-fw fa-chart-area"></i>
-        <span>Parcel Accepted</span></a>
+        <span>Assign Agent to Pick</span></a>
     </li>
 
     <li class="nav-item">
       <a class="nav-link" href="{{ route('picked') }}">
         <i class="fas fa-fw fa-chart-area"></i>
-        <span>Parcel Picked</span></a>
+        <span>Assign Agent to Deliver</span></a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('parcel.accepted') }}">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>All Accepted Parcel</span></a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('parcel.picked') }}">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>All Picked Parcel</span></a>
     </li>
 
     <li class="nav-item">

@@ -1,13 +1,17 @@
 <x-dashboard-admin>
     @section('content')
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">All Accepted Orders</h1>
+    <h1 class="h3 mb-2 text-gray-800">All Picked Up Orders</h1>
+
+    @if(session('message'))
+        <div class="alert alert-success">{{session('message')}}</div>
+    @endif
 
     <!-- DataTales Example -->
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">All Accepted Orders</h6>
+          <h6 class="m-0 font-weight-bold text-primary">All Picked Up Orders</h6>
         </div>
         <div class="card-body">
           <div class="table-responsive">
@@ -17,16 +21,16 @@
                   <th>SL</th>
                   <th>Company Name</th>
                   <th>Order Date</th>
-                  <th>Pickup Date</th>
-                  <th>Pickup Address</th>
+                  <th>Pickup Info</th>
+                  <th>Parcel Info</th>
                   <th>Customer Info</th>
                   <th>Admin Note</th>
-                  <th>Product</th>
                   <th>Total Price</th>
                   <th>Parcel Status</th>
                   <th>Delivery Date</th>
                   <th>Code</th>
-                  <th>Action</th>
+                  <th>Picked By</th>
+                  <th>To Be Deliver</th>
                   <th>Updated At</th>
                 </tr>
               </thead>
@@ -35,58 +39,37 @@
                     <th>SL</th>
                     <th>Company Name</th>
                     <th>Order Date</th>
-                    <th>Pickup Date</th>
-                    <th>Pickup Address</th>
+                    <th>Pickup Info</th>
+                    <th>Parcel Info</th>
                     <th>Customer Info</th>
                     <th>Admin Note</th>
-                    <th>Product</th>
                     <th>Total Price</th>
                     <th>Parcel Status</th>
                     <th>Delivery Date</th>
                     <th>Code</th>
-                    <th>Action</th>
+                    <th>Picked By</th>
+                    <th>To Be Deliver</th>
                     <th>Updated At</th>
                 </tr>
               </tfoot>
               <tbody>
-  
+               
                 @foreach($orders as $order)
               
                   <tr>
                       <td>{{$count++}}</td>
                       <td>{{$order::find($order->id)->user->name}}</td>
                       <td>{{$order->created_at}}</td>
-                      <td>{{ Carbon\Carbon::parse($order->pick_up_date)->format('Y-m-d') }}</td>
-                      <td>{{$order->pick_up_address}}</td>
-                      <td>{{$order->customer_name}},<br> {{$order->customer_address}}, <br> {{$order->customer_mobile}} </td>
-                      <td>{{$order->customer_note}}</td>
+                      <td>{{ Carbon\Carbon::parse($order->pick_up_date)->format('Y-m-d') }}, <br> {{$order->pick_up_address}}</td>
                       <td>{{$order->product_des}}, <br> Quantity: {{$order->quantity}}</td>
+                      <td>{{$order->customer_name}}, <br>{{$order->customer_address}}, <br> {{$order->customer_mobile}} </td>
+                      <td>{{$order->customer_note}}</td>
                       <td>{{$order->amount}}</td>
                       <td>{{$order->status}}</td>
                       <td>{{$order->delivery_date}}, <br> {{$order->preferred_delivery_time}}</td>
-                      <td>{{$order->order_code}}</td>
-                      {{--  <td> <a href="{{route('order_picked', ['id'=> $order->id])}}" class="btn btn-success">Picked</a> </td>  --}}
-                     
-                  
-                      <td>
-                      <form action="{{route('order_picked_assign', ['id'=> $order->id])}}" method="POST">
-                        @csrf
-                        @method('PATCH')
-                        <select name="agent_id" id="" style="margin-bottom: 20px;" required>
-                          <option value="">Select Pickup Man</option>
-                          @foreach($agents as $agent)
-                            @if($agent->status == 1 && $agent->hasRole('agent'))
-                             <option value="{{$agent->id}}">{{$agent->name}}</option>
-                            @endif
-                           @endforeach
-
-                        </select>
-                        <input type="submit" value="Assign" class="btn btn-success">
-                      </form>
-                     </td>
-                  
-                     
-                     
+                      <td>{{$order->order_code}}</td> 
+                      <td>{{ App\User::where('id',$order->pickup_agent_id)->pluck('name')->first() }}</td>
+                      <td>{{App\User::where('id',$order->delivery_agent_id)->pluck('name')->first()}}</td>
                       <td>{{$order->updated_at->diffForHumans()}}</td>
   
                   </tr>

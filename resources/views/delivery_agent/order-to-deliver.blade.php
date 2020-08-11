@@ -1,4 +1,4 @@
-<x-dashboard-admin>
+<x-dashboard-agent>
     @section('content')
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">All Picked Up Orders</h1>
@@ -77,18 +77,19 @@
                         <a href="{{ route('order_returned',['id'=> $order->id])}}" class="btn btn-danger">Canceled</a> 
                       </td>   --}}
                       <td>
-                        <form action="{{route('order_delivery_assign', ['id'=> $order->id])}}" method="POST">
+                        <form action="{{route('order_delivered', ['id'=> $order->id])}}" method="POST">
                           @csrf
                           @method('PATCH')
-                          <select name="agent_id" id="" style="margin-bottom: 20px;" required>
-                            <option value="">Select Delivery Man</option>
-                            @foreach($agents as $agent)
-                              @if($agent->status == 1 && $agent->hasRole('agent'))
-                              <option value="{{$agent->id}}">{{$agent->name}}</option>
-                              @endif
-                            @endforeach
-                          </select>
-                          <input type="submit" value="Assign" class="btn btn-success">
+                          <div>
+                            <p><input type="radio" selected name="after_picked" value="delivered" required>
+                              <label for="">Delivered</label>
+                            </p>
+                            <p> <input type="radio" name="after_picked" value="returned">
+                              <label for="">Returned</label>
+                            </p>
+                          </div>
+    
+                          <input type="submit" value="Submit" class="btn btn-success">
                         </form>
                       </td>
                       <td>{{$order->updated_at->diffForHumans()}}</td>
@@ -104,4 +105,4 @@
       </div>
 
     @endsection
-</x-dashboard-admin>
+</x-dashboard-agent>

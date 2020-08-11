@@ -58,7 +58,13 @@
                       <td>{{$agent->address}}</td>
                       <td>{{$agent->reference}}</td>
                       <td>{{$agent->NID}}</td>
-                      <td>{{$agent->status}}</td>
+                      <td>
+                        @if($agent->status == 1)
+                        active
+                        @else
+                        inactive
+                        @endif
+                      </td>
                       <td>{{$agent->created_at->diffForHumans()}}</td>    
                       <td>{{$agent->updated_at->diffForHumans()}}</td>
                       <td><a href="{{ route('agents.edit',['id'=> $agent->id]) }}" class="btn btn-primary">Edit</a></td>

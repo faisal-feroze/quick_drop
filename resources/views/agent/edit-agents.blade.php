@@ -63,9 +63,15 @@
                 <label for="text" class="col-sm-2 col-form-label">Status</label>
                 <div class="col-sm-10">
                     <select class="form-control" name="status">
-                        <option selected>{{$agent->status}}</option>
-                        <option value="active">Active</option>
-                        <option value="deactive">Deactive</option>
+                        <option value="{{$agent->status}}" selected>
+                            @if($agent->status == 1)
+                            Active
+                            @else
+                            Inactive
+                            @endif
+                        </option>
+                        <option value="1">Active</option>
+                        <option value="0">Deactive</option>
                     </select>
                 </div> 
             </div>

@@ -183,7 +183,7 @@
 
                                 else{
 
-                                    $total_service_charge = $total_service_charge + $cod[$i];
+                                    $total_service_charge = $total_service_charge + abs($cod[$i]);
 
                                 }
 
@@ -207,7 +207,7 @@
 
                                 @else
 
-                                    <td>- {{$cod[$i]}} <input type="hidden" value="{{$cod[$i]}}" name="cod[]"></td>
+                                    <td>- {{abs($cod[$i])}} <input type="hidden" value="{{abs($cod[$i])}}" name="cod[]"></td>
 
                                 @endif
 

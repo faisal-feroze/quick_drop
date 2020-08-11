@@ -21,14 +21,14 @@
             <div class="form-group row">
                 <label for="" class="col-sm-2 col-form-label">Pickup Date</label>
                 <div class="col-sm-10">
-                  <input type="date" name="pick_up_date" class="form-control" id="" placeholder="">
+                  <input type="date" name="pick_up_date" class="form-control" id="" placeholder="" required>
                 </div>
               </div>
   
               <div class="form-group row">
                   <label for="text" class="col-sm-2 col-form-label">Pickup Address</label>
                   <div class="col-sm-10">
-                    <textarea name="pick_up_address" class="form-control" id="" cols="15" rows="5">{{auth()->user()->address}}</textarea>
+                    <textarea name="pick_up_address" class="form-control" id="" cols="15" rows="5">{{auth()->user()->address}}, {{auth()->user()->city}}</textarea>
                   </div>
               </div>
 

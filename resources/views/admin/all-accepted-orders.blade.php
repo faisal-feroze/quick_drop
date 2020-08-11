@@ -26,7 +26,7 @@
                   <th>Parcel Status</th>
                   <th>Delivery Date</th>
                   <th>Code</th>
-                  <th>Action</th>
+                  <th>To Be Pick</th>
                   <th>Updated At</th>
                 </tr>
               </thead>
@@ -44,7 +44,7 @@
                     <th>Parcel Status</th>
                     <th>Delivery Date</th>
                     <th>Code</th>
-                    <th>Action</th>
+                    <th>To Be Pick</th>
                     <th>Updated At</th>
                 </tr>
               </tfoot>
@@ -65,28 +65,7 @@
                       <td>{{$order->status}}</td>
                       <td>{{$order->delivery_date}}, <br> {{$order->preferred_delivery_time}}</td>
                       <td>{{$order->order_code}}</td>
-                      {{--  <td> <a href="{{route('order_picked', ['id'=> $order->id])}}" class="btn btn-success">Picked</a> </td>  --}}
-                     
-                  
-                      <td>
-                      <form action="{{route('order_picked_assign', ['id'=> $order->id])}}" method="POST">
-                        @csrf
-                        @method('PATCH')
-                        <select name="agent_id" id="" style="margin-bottom: 20px;" required>
-                          <option value="">Select Pickup Man</option>
-                          @foreach($agents as $agent)
-                            @if($agent->status == 1 && $agent->hasRole('agent'))
-                             <option value="{{$agent->id}}">{{$agent->name}}</option>
-                            @endif
-                           @endforeach
-
-                        </select>
-                        <input type="submit" value="Assign" class="btn btn-success">
-                      </form>
-                     </td>
-                  
-                     
-                     
+                      <td>{{App\User::where('id',$order->pickup_agent_id)->pluck('name')->first()}}</td>   
                       <td>{{$order->updated_at->diffForHumans()}}</td>
   
                   </tr>

@@ -29,6 +29,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/user', 'UserController@index')->name('user');
 Route::get('/admin', 'AdminController@index')->name('admin');
+Route::get('/agent', 'AgentController@index')->name('agent');
 
 Route::get('/admin/show_user', 'AdminController@show_user')->name('show_user');
 
@@ -36,9 +37,12 @@ Route::get('/admin/show_user', 'AdminController@show_user')->name('show_user');
 
 Route::get('/status/{id}', 'AdminController@status')->name('status');
 
-Route::patch('/order_picked/{id}', 'AdminController@order_picked')->name('order_picked');
+// Route::patch('/order_picked/{id}', 'AdminController@order_picked')->name('order_picked');
+ Route::patch('/order/pick/assign/{id}', 'AdminController@order_picked_assign')->name('order_picked_assign');
 
-Route::patch('/delivered/{id}', 'AdminController@order_delivered')->name('order_delivered');
+// Route::patch('/delivered/{id}', 'AdminController@order_delivered')->name('order_delivered');
+
+Route::patch('/delivery-agent/assign/{id}', 'AdminController@order_delivery_assign')->name('order_delivery_assign');
 
 // Route::get('/returned/{id}', 'AdminController@order_returned')->name('order_returned');
 
@@ -80,6 +84,10 @@ Route::get('/order/all', 'AdminController@all_orders')->name('all_orders');
 
 Route::get('/order/picked', 'AdminController@picked')->name('picked');
 
+Route::get('/order/all/accepted', 'AdminController@all_accepted')->name('parcel.accepted');
+
+Route::get('/order/all/picked', 'AdminController@all_picked')->name('parcel.picked');
+
 Route::get('/order/accepted', 'AdminController@accepted')->name('accepted');
 
 Route::get('/order/order_accepted/{id}', 'AdminController@order_accepted')->name('order_accepted');
@@ -112,4 +120,22 @@ Route::get('/order/paid', 'InvoiceController@paid_orders')->name('paid_orders');
 Route::get('/order/view/invoice/{memo}', 'InvoiceController@view_invoice')->name('view.invoice');
 
 Route::get('user/order/view/invoice/{memo}', 'UserController@view_invoice')->name('show.invoice');
+
+
+Route::get('/agent/orders-to-pick', 'AgentController@order_to_pick')->name('order_to_pick');
+
+Route::get('/agent/order-to-deliver', 'AgentController@order_to_deliver')->name('order_to_deliver');
+
+Route::get('/agent/all-picked-orders', 'AgentController@all_picked_orders')->name('all_picked_orders');
+
+Route::get('/agent/all-delivered-orders', 'AgentController@all_delivered_orders')->name('all_delivered_orders');
+
+Route::get('/agent/all-returned-orders', 'AgentController@all_returned_orders')->name('all_returned_orders');
+
+Route::get('/agent/profile', 'AgentController@agent_profile')->name('agent_profile');
+
+
+Route::patch('/delivery-agents/profile/update/{id}', 'AgentController@update')->name('agents_update');
+Route::patch('/delivered/{id}', 'AgentController@order_delivered')->name('order_delivered');
+Route::patch('/order_picked/{id}', 'AgentController@order_picked')->name('order_picked');
 

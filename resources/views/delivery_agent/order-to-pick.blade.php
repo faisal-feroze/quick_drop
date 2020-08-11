@@ -1,4 +1,4 @@
-<x-dashboard-admin>
+<x-dashboard-agent>
     @section('content')
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">All Accepted Orders</h1>
@@ -66,25 +66,15 @@
                       <td>{{$order->delivery_date}}, <br> {{$order->preferred_delivery_time}}</td>
                       <td>{{$order->order_code}}</td>
                       {{--  <td> <a href="{{route('order_picked', ['id'=> $order->id])}}" class="btn btn-success">Picked</a> </td>  --}}
-                     
-                  
-                      <td>
-                      <form action="{{route('order_picked_assign', ['id'=> $order->id])}}" method="POST">
+                     <td>
+
+                      <form action="{{route('order_picked', ['id'=> $order->id])}}" method="POST">
                         @csrf
                         @method('PATCH')
-                        <select name="agent_id" id="" style="margin-bottom: 20px;" required>
-                          <option value="">Select Pickup Man</option>
-                          @foreach($agents as $agent)
-                            @if($agent->status == 1 && $agent->hasRole('agent'))
-                             <option value="{{$agent->id}}">{{$agent->name}}</option>
-                            @endif
-                           @endforeach
-
-                        </select>
-                        <input type="submit" value="Assign" class="btn btn-success">
+                        <input type="submit" value="Picked" class="btn btn-success">
                       </form>
+
                      </td>
-                  
                      
                      
                       <td>{{$order->updated_at->diffForHumans()}}</td>
@@ -100,4 +90,4 @@
       </div>
 
     @endsection
-</x-dashboard-admin>
+</x-dashboard-agent>
