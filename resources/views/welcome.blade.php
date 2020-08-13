@@ -78,8 +78,10 @@
                     @auth
                     @if(auth()->user()->hasRole('user'))
                         <a href="{{ url('/user') }}">Dashboard</a>
-                    @else
+                    @elseif(auth()->user()->hasRole('superadministrator'))
                         <a href="{{ url('/admin') }}">Dashboard</a>
+                    @elseif(auth()->user()->hasRole('agent'))
+                        <a href="{{ url('/agent') }}">Dashboard</a>
                     @endif
 
                     @else

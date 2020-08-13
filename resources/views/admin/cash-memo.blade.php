@@ -300,10 +300,22 @@
 
                     </table>
 
-                    <label for="">Remarks/Txn Id: </label> <input type="text" name="remarks" required>
+                    @if(App\User::where('id',$user_id)->pluck('payment_method')->first()=='Hand Cash (Home)')
 
+                        @php
+                            $lastInvoiceId = App\Invoice::select('id')->orderBy('id','desc')->first();
+                            $lastInvoiceId=(int)substr($lastInvoiceId , 6);
+                            $lastInvoiceId++;
+                            $txn_no = 'Hand_Cash-'.$lastInvoiceId;
+                        @endphp
 
+                        <label for="">Remarks/Txn Id: </label> <input type="text" name="remarks" value="{{$txn_no}}" required>
 
+                    @else
+                        <label for="">Remarks/Txn Id: </label> <input type="text" name="remarks" required>
+                    @endif
+
+                
                     <button type="submit" class="btn btn-success">Pay Bills</button>
 
                 </form>

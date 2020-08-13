@@ -1,7 +1,7 @@
 <x-dashboard-admin>
     @section('content')
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">All Picked Up Orders</h1>
+    <h1 class="h3 mb-2 text-gray-800">Assign Agent to Deliver</h1>
 
     @if(session('message'))
         <div class="alert alert-success">{{session('message')}}</div>

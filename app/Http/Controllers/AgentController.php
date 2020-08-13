@@ -17,8 +17,20 @@ class AgentController extends Controller
     }
 
     public function index(){
-        // $users = User::all();
-        return view('delivery_agent.index');
+        $agent_id = Auth::user()->id;
+        $orders_to_pick = Order::where('status','accepted')->where('pickup_agent_id',$agent_id)->count();
+        $orders_to_deliver = Order::where('status','picked')->where('delivery_agent_id',$agent_id)->count();
+        $orders_picked = Order::where('status','picked')->where('pickup_agent_id',$agent_id)->count();
+        $orders_delivered = Order::where('status','delivered')->where('pickup_agent_id',$agent_id)->count();
+        $orders_returned = Order::where('status','returned')->where('pickup_agent_id',$agent_id)->count();
+
+        return view('delivery_agent.index',[
+            'orders_to_pick'=>$orders_to_pick,
+            'orders_to_deliver'=>$orders_to_deliver,
+            'orders_picked'=>$orders_picked,
+            'orders_delivered'=>$orders_delivered,
+            'orders_returned'=>$orders_returned,
+        ]);
     }
 
     public function order_to_pick(){

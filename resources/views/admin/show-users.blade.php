@@ -51,7 +51,7 @@
                 @foreach($users as $user)
                     <tr>
                         <td>{{$count++}}</td>
-                        <td>{{$user->company_name}}</td>
+                        <td> <a href="{{route('company_detail', ['id'=> $user->id])}}">{{$user->company_name}}</a></td>
                         <td>{{$user->phone}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->name}}</td>

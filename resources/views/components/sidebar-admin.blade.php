@@ -23,7 +23,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-      Interface
+      Order Informations
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
@@ -43,6 +43,12 @@
       <a class="nav-link" href="{{ route('picked') }}">
         <i class="fas fa-fw fa-chart-area"></i>
         <span>Assign Agent to Deliver</span></a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('order_running') }}">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Running Parcels</span></a>
     </li>
 
     <li class="nav-item">
@@ -88,14 +94,14 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-      Addons
+      Company/Agents
     </div>
   
     <!-- Nav Item - Charts -->
     <li class="nav-item">
       <a class="nav-link" href="{{ route('show_user') }}">
         <i class="fas fa-fw fa-chart-area"></i>
-        <span>See Users</span></a>
+        <span>Companies</span></a>
     </li>
 
     <!-- Nav Item - Tables -->

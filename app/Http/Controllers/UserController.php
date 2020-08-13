@@ -25,7 +25,8 @@ class UserController extends Controller
 
     public function index(){
         $order_placed = auth()->user()->orders->where('status','order placed')->count();
-        $order_running = auth()->user()->orders->where('status','picked')->count();
+        $order_running = auth()->user()->orders->whereIn('status',['picked','accepted'])->count();
+        //$orders = Order::all()->whereIn('status',['returned','rejected']);
         $order_delivered = auth()->user()->orders->where('status','delivered')->count();
         $order_returned = auth()->user()->orders->where('status','returned')->count();
         $order_completed = auth()->user()->orders->where('bill_status','paid')->count();

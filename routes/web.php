@@ -37,6 +37,10 @@ Route::get('/admin/show_user', 'AdminController@show_user')->name('show_user');
 
 Route::get('/status/{id}', 'AdminController@status')->name('status');
 
+Route::get('/company_detail/{id}', 'AdminController@company_detail')->name('company_detail');
+
+
+
 // Route::patch('/order_picked/{id}', 'AdminController@order_picked')->name('order_picked');
  Route::patch('/order/pick/assign/{id}', 'AdminController@order_picked_assign')->name('order_picked_assign');
 
@@ -83,6 +87,8 @@ Route::get('/order/options', function () {
 Route::get('/order/all', 'AdminController@all_orders')->name('all_orders');
 
 Route::get('/order/picked', 'AdminController@picked')->name('picked');
+
+Route::get('/order/running/all', 'AdminController@order_running')->name('order_running');
 
 Route::get('/order/all/accepted', 'AdminController@all_accepted')->name('parcel.accepted');
 
